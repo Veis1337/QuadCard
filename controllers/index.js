@@ -4,7 +4,7 @@ const apiRoutes = require('./api');
 router.use('/api', apiRoutes);
 
 router.use((req, res) => {
-  res.send("<h1>No route specified</h1>")
+  res.render('layouts/homePage');
 });
 
 module.exports = router;

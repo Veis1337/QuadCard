@@ -31,6 +31,14 @@ Card.init(
         leftNum: {
             type: DataTypes.INTEGER,
         },
+        fileName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+        backGround: {
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
     },
     {
         sequelize,

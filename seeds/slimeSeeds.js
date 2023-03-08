@@ -9,6 +9,8 @@ const data = [
         rightNum: 3,
         backNum: 3,
         leftNum: 3,
+        fileName: '01-blueSlime.png',
+        backGround: 'slimeBG.png',
     },
     {
         id: 2,
@@ -18,6 +20,8 @@ const data = [
         rightNum: 4,
         backNum: 2,
         leftNum: 4,
+        fileName: '01-blueSlime.png',
+        backGround: 'slimeBG.png',
     },
     {
         id: 3,
@@ -27,6 +31,8 @@ const data = [
         rightNum: 2,
         backNum: 3,
         leftNum: 2,
+        fileName: '01-blueSlime.png',
+        backGround: 'slimeBG.png',
     },
     {
         id: 4,
@@ -36,6 +42,8 @@ const data = [
         rightNum: 2,
         backNum: 4,
         leftNum: 2,
+        fileName: '01-blueSlime.png',
+        backGround: 'slimeBG.png',
     },
     {
         id: 5,
@@ -45,6 +53,8 @@ const data = [
         rightNum: 2,
         backNum: 5,
         leftNum: 2,
+        fileName: '01-blueSlime.png',
+        backGround: 'slimeBG.png',
     },
 ];
 
