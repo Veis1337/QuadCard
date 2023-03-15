@@ -1,19 +1,35 @@
 const express = require("express");
 const routes = require("./controllers/index");
 const sequelize = require("./config/connection");
+const session = require('express-session');
 const path = require("path");
 const exphbs = require("express-handlebars");
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const helpers = require('./utils/helpers');
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({ helpers });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Set up sessions with cookies
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {
+    // Stored in milliseconds
+    maxAge: 24 * 60 * 60 * 1000, // expires after 1 day
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+};
+
+app.use(session(sess));
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
-// This is for accessing public css or javascript files (not used yet)
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static('public'));
 app.use(require('./controllers/'));
 
 app.use(express.json());
@@ -21,5 +37,5 @@ app.use(express.urlencoded({ extended: false }));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+  app.listen(PORT, () => console.log('Server listening on: http://localhost:' + PORT));
 });
